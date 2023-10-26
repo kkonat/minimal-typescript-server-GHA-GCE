@@ -1,0 +1,19 @@
+{
+  "name": "kk-tsserver_backend",
+  "version": "0.0.1",
+  "description": "Minimal GHA GAE typescript app backend with expres",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "gcp-build": "tsc -p .",
+    "build": "tsc --project . --outDir dist/",
+    "deploy": "gcloud app deploy"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "typescript": "^3.2.2"
+  }
+}

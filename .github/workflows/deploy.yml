@@ -1,0 +1,45 @@
+name: build and deploy minimal GAE App
+
+on:
+  push:
+    branches: [main]
+env:
+  PROJECT: "kk-tsserver" # Name of the Google App Engine application
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # copy the source code to the worker
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # install cache node and npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      # authenticate with GCP
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+
+      # set up the Cloud SDK
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+
+      # deploy the service to App Engine
+      - name: deploy service to app engine
+        id: deploy
+        uses: "google-github-actions/deploy-appengine@v1"
+        with:
+          project_id: ${{env.PROJECT}}
+          working_directory: ./backend
+
+          # test if the service responds
+      - name: "test"
+        run: 'curl "${{ steps.deploy.outputs.url }}"'
