@@ -42,15 +42,11 @@ https://console.cloud.google.com/apis/library/appengine.googleapis.com?project=k
 
 #### Then go to Service Accounts
 
-https://console.cloud.google.com/iam-admin/serviceaccounts
+https://console.cloud.google.com/iam-admin/serviceaccount
 
-#### Create a service account if does not exist
+Select "App Engine default service account" and click on its email on the left to Edit it
 
-https://console.cloud.google.com/iam-admin/serviceaccounts/create
-
-#### Go to the just-creted service account
-
-#### Switch to Keys
+#### Switch to "KEYS"
 
 #### Click "ADD KEY" > "Create new key" > "JSON"
 
