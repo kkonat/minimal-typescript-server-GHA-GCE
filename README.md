@@ -1,4 +1,7 @@
-# A ,inimal Typescript Express Server with github actions (GHA) CI/CD and Google App Engine (GAE) deployment
+# A minimal Typescript Express Server with github actions (GHA) CI/CD and Google App Engine (GAE) deployment
+
+The final app should be available at:
+url: https://backend-dot-kk-tsserver.lm.r.appspot.com
 
 ### Initialize git
 
@@ -11,8 +14,6 @@ git remote add origin https://github.com/kkonat/minimal-typescript-server-GHA-GC
 git push -u origin main
 ```
 
-url: https://backend-dot-kk-tsserver.lm.r.appspot.com
-
 ### Create project:
 
 `gcloud projects create kk-goserver`
@@ -22,6 +23,10 @@ kk-tsserver must be globally (for the whole gcloud) unique name
 ### Initialize config, login et stuff
 
 `gcloud init`
+
+### Create app engine app
+
+`gcloud app create`
 
 ### Make sure the Compute Engine API is enabled for your project
 
